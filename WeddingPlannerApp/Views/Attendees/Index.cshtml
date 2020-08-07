@@ -1,0 +1,38 @@
+﻿@model List<WeddingPlannerApp.Models.Attendee>
+@{
+    ViewBag.Title = "Attendees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <h2>Attendees</h2>
+</p>
+
+@Html.ActionLink("New Attendee", "New", "Attendees", null, new { @id = "attendee-button", @class = "btn btn-dark" })
+
+
+<table id="attendees" class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+
+    @foreach (var attendee in Model)
+    {
+        <tr>
+            <td>
+                <div style="display: flex; align-items: center;">
+                    @Html.ActionLink(attendee.FirstName + " " + attendee.LastName, "Edit", "Attendees", new { id = attendee.Id }, new { @style = "flex: 1;" })
+                    @Html.ActionLink("x", "Delete", "Attendees", new { id = attendee.Id }, new { @id = "delete-button", @class = "btn btn-dark" })
+                </div>
+            </td>
+            <td style="text-align: center; vertical-align: middle;">@attendee.Email</td>
+            <td style="text-align: center; vertical-align: middle;">@attendee.PhoneNumber</td>
+            <td style="text-align: center; vertical-align: middle;">@attendee.Role.Name</td>
+        </tr>
+    }
+</table>

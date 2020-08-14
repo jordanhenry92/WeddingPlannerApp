@@ -6,6 +6,7 @@ using WeddingPlannerApp.ViewModels;
 
 namespace WeddingPlannerApp.Controllers
 {
+    [Authorize(Roles = RoleName.CanManageAttendees)]
     public class AttendeesController : Controller
     {
         private readonly ApplicationDbContext _context;

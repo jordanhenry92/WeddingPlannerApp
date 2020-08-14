@@ -9,7 +9,7 @@ namespace WeddingPlannerApp.Controllers
     public class LocationController : Controller
     {
         // GET: Location
-        public ActionResult Map()
+        public ActionResult Venue()
         {
             return View();
         }
